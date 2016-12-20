@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;HangmanManager.generatePattern(...)&apos; to &apos;generateGuess&apos;&#x0D;&#x0A;- Original project: &apos;HW 4 Evil Hangman&apos;&#x0D;&#x0A;- Original element: &apos;HangmanManager.generatePattern(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;HangmanManager.generateGuess(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;generatePattern&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{HangmanManager.java[HangmanManager~generatePattern~C" name="generateGuess" references="true" stamp="1477112766285" version="1.0"/>
+</session>

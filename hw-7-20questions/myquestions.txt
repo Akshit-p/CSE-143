@@ -1,0 +1,58 @@
+Q:
+Is the person an Soccer Athlete?
+Q:
+Is the person the best player?
+A:
+lionel messi
+Q:
+Is it sencond best?
+A:
+Cristiano Ronaldo
+Q:
+does he play in England?
+Q:
+does he play for Manchester United?
+Q:
+is he a striker?
+A:
+Zlatan Ibrahimovic
+Q:
+is he a midfielder?
+Q:
+does he dab?
+A:
+Paul Pogba
+A:
+Juan Mata
+A:
+David De Gea
+Q:
+Does he play for Chelsea?
+A:
+Eden Hazard
+A:
+Kevin De Bruyne
+A:
+Luis Suarez
+Q:
+Is the person a cricketer?
+Q:
+is he the best?
+A:
+Virat Kohli
+Q:
+Is he indian?
+A:
+MS Dhoni
+A:
+Chris Gayle
+Q:
+Is the person a common man?
+A:
+Akshit Patel
+Q:
+Is the person a celebrity?
+A:
+Tom cruise
+A:
+God

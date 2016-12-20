@@ -1,0 +1,74 @@
+/** 
+ * LinkedIntList is a class that represents a LinkedList with
+ * int data.  
+ *  
+ * @author Adam Blank
+ **/
+public class LinkedIntList {
+    private int size;
+    private ListNode front;
+
+    public LinkedIntList() {
+        this.size = 0;
+        this.front = null;
+    }
+
+    public void add(int value) {
+        if (this.front == null) {
+            this.front = new ListNode(value);
+        }
+        else {
+            ListNode current = this.front;
+            while (current != null) {
+                current = current.next;
+            }
+
+            // FIXME: We didn't fix this line.  What's broken about it??
+            current = new ListNode(value);
+        }
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        ListNode current = this.front;
+        while (current != null && current.next != null) {
+            result += current.data + ", ";
+            current = current.next;
+        }
+        if (current != null) {
+            result += current.data;
+        }
+        return "[" + result + "]";
+    }
+
+
+
+
+
+
+
+
+    /** 
+     * ListNode is a class for storing a single node of a linked list
+     * that stores int values.  It stores an integer value and a link 
+     * to the next node of the linked list.
+     * 
+     * @author Adam Blank
+     **/
+    public class ListNode {
+        public final int data;
+        public ListNode next;
+
+        /** Creates a terminal ListNode with data as its data. */
+        public ListNode(int data) {
+            this(data, null);
+        }
+
+        /** Creates a ListNode with data as its data and next as the node it points to. */
+        public ListNode(int data, ListNode next) {
+            this.data = data;
+            this.next = next;
+        }
+    }
+}

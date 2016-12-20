@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;values&apos; in &apos;Grammar.Grammar(...)&apos; to &apos;terminals&apos;&#x0D;&#x0A;- Original project: &apos;hw5-grammar&apos;&#x0D;&#x0A;- Original element: &apos;Grammar.Grammar(List&lt;String&gt;).values&apos;&#x0D;&#x0A;- Renamed element: &apos;values&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;values&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{Grammar.java[Grammar~Grammar~QList\&lt;QString;&gt;;@values!563!603!572!577!\[QString;!0!false" name="terminals" references="true" stamp="1478379179540" version="1.0"/>
+</session>

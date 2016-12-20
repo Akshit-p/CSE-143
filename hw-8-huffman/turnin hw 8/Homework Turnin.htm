@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+
+<title>Homework Turnin</title>
+<style type="text/css">
+/* Grade-It homework turnin page style sheet */
+
+a {
+	color: #aa4400;
+	text-decoration: none;
+}
+
+a:hover {
+	background-color: #FFFF99;
+	text-decoration: underline;
+}
+
+a img {
+	border-width: 0;
+}
+
+.aside {
+	font-size: small;
+}
+
+body {
+	background-color: #ffffff;
+	color: #000000;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida", "Helvetica Neue", "Helvetica", Verdana, Arial, sans-serif;
+	font-size: 10pt;
+	padding: 1em;
+}
+
+#cheatpolicyexplain {
+	color: #800;
+	font-weight: bold;
+}
+
+.cheatwarning {
+	text-indent: -2em;
+	margin-left: 3em;
+}
+
+.deemphasized {
+	color: #666666;
+}
+
+dt {
+	font-weight: bold;
+}
+
+.emphasized {
+	font-weight: bold;
+}
+
+.error, .errorfixed {
+	background-color: #FFFFDD;
+	border: thin solid gray;
+	font-weight: bold;
+}
+
+.error {
+	color: red;
+}
+
+.errorfixed {
+	color: #000099;
+}
+
+#errormessage, .error, #warningmessage, .warning {
+	font-size: 110%;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	margin: 1em;
+}
+
+#errormessage, .error {
+	background-color: #ffe8e8;
+	border: 3px solid #777777;
+	color: red;
+	font-size: larger;
+}
+
+.excitingnews {
+	background-color: #eeeeff;
+	border: 2px dashed #00AA00;
+	overflow: hidden;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.filename {
+	text-decoration: none;
+}
+
+form, #main {
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 70em;
+}
+
+form td, form th {
+	padding-top: 0.3em;
+}
+
+h1 {
+	margin: 0em;
+	/* margin-top: 0.25em; */
+	padding-top: 0.25em;
+}
+
+.highlight {
+	background-color: yellow;
+}
+
+img {
+	vertical-align: bottom;
+}
+
+img.icon {
+	height: 16px;
+	width: 16px;
+	vertical-align: baseline;
+}
+
+img.imageicon, img.sidebaricon {
+	border: none;
+	height: 16px;
+	width: 16px;
+	vertical-align: middle;
+}
+
+input[readonly], input[readonly="readonly"] {
+	background-color: #DDD;
+	color: #555;
+}
+
+.leftcolumn {
+	padding-right: 20px;
+	text-align: left;
+	vertical-align: top;
+	width: 150px;
+}
+
+#loading {
+	display: none;
+}
+
+.noteslist li {
+	margin-bottom: 0.5em;
+}
+
+.saveforyourrecords {
+	background-color: #ffc;
+	border: 1px dashed red;
+	padding: 0.5em;
+}
+
+.separated {
+	padding-bottom: 2em;
+}
+
+.separatedtop {
+	padding-top: 2em;
+}
+
+.success {
+	color: #070;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+.acceptedproblems {
+	color: #730;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+table {
+	margin: 0px;
+	padding: 0px;
+	border-width: 0px;
+	color: #000000;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+td, th {
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+td.spaced {
+	padding-right: 20px;
+}
+
+tr.evenrow {
+	background-color: #EEEEEE;
+}
+
+.turninlink {
+	background-color: #EEEEEE;
+	border: 2px solid #CCCCCC;
+	float: right;
+	margin-right: 1em;
+	padding: 0.5em;
+}
+
+.urgent {
+	color: #990000;
+	font-weight: bold;
+}
+
+/* ------------------- */
+button:hover, input[type="submit"]:hover {
+	color: #666600;
+}
+
+h1 {
+	padding: 0em;
+	padding-top: 0.25em;
+	text-align: center;
+}
+
+h2 {
+	line-height: 16pt;
+}
+
+h2.spaced {
+	margin-top: 2em;
+}
+
+.invalid {
+	background-color: #ffff00;
+}
+
+#warningmessage, .warning {
+	background-color: #fff8dd;
+	border: 3px solid rgb(125, 85, 0) /* rgb(205, 135, 0) */;
+	color: rgb(125, 85, 0);
+	font-size: larger;
+}
+
+#errormessage p, #warningmessage p, .warning p {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+.failure {
+	color: red;
+	font-weight: bold;
+}
+
+.filename {
+	font-family: monospace;
+}
+
+hr {
+	margin-top: 2em;
+}
+
+input[type="submit"] {
+	font-family: Arial, sans-serif;
+	font-size: 18pt;
+	font-weight: bold;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.nametable {
+	 border: none;
+	 border-collapse: collapse;
+	 margin: 0em;
+	 padding: 0em;
+}
+
+.nametable td, .nametable th, td.filename {
+	padding-right: 0.5em;
+}
+
+#submitarea {
+	margin-bottom: 2em;
+	margin-top: 2em;
+	text-align: center;
+}
+
+.surveyarea, .tabcell {
+	display: none;
+}
+
+th {
+	padding-right: 2em;
+	text-align: left;
+}
+
+/* */
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
+.codefile {
+	border: 2px solid #2F6FAB;
+	margin-bottom: 1em;
+	padding: 0;
+}
+
+.codefile h2 {
+	background-color: #2F6FAB;
+	color: white;
+	margin: 0;
+	padding: 0 0.5em 0.25em;
+}
+
+.codefile pre, .codefile xmp {
+	background-color: #F9F9F9;
+	line-height: 1.05em;
+	margin: 0;
+	padding: 0.75em;
+	overflow: auto;
+}
+
+.columnlabel {
+	float: left;
+	font-weight: bold;
+	width: 9em;
+}
+
+.errormessage, .warningmessage {
+	background-color: #FFEEEE;
+	border: 2px dashed red;
+	margin-left: 2em;
+	margin-right: 2em;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.errormessage h2, .warningmessage h2 {
+	color: red;
+	font-size: larger;
+}
+
+.errormessage pre {
+	font-size: larger;
+	font-weight: bold;
+}
+
+h1 {
+	background-color: #EEEEEE;
+	border-bottom: 2px solid gray;
+	text-align: center;
+}
+
+h1, h2, h3 {
+	white-space: nowrap;
+}
+
+.info {
+	text-align: center;
+}
+
+#main {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+#studentinfoheader {
+	font-size: 12pt;
+	font-weight: normal;
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 20em;
+	width: 20em;
+}
+
+.tooltip {
+	background-color: #FFFFAA;
+	border: 1px solid #999999;
+	margin: 0.5em;
+}
+
+.warningmessage {
+	background-color: #FFFFDD;
+	border: 2px dashed yellow;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+/* geshi styles */
+.codefile .imp {font-weight: bold; color: red;}
+.codefile li, .codefile .li1 {font-weight: normal; vertical-align:top;}
+.codefile .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.codefile .li2 {font-weight: bold; vertical-align:top;}
+.codefile .kw1 {color: #000088; font-weight: bold;}
+.codefile .kw2 {color: #000088; font-weight: bold;}
+.codefile .kw1 {color: #000000;  font-weight: bold;}
+.codefile .kw2 {color: #000000; font-weight: bold;}
+.codefile .kw3 {color: #006600; font-weight: bold;}
+.codefile .kw4 {color: #006600; font-weight: bold;}
+.codefile .kw5 {color: #003399; font-weight: bold;}
+.codefile .kw6 {color: #003399; font-weight: bold;}
+.codefile .kw7 {color: #003399; font-weight: bold;}
+.codefile .kw8 {color: #003399; font-weight: bold;}
+.codefile .kw9 {color: #003399; font-weight: bold;}
+.codefile .kw10 {color: #003399; font-weight: bold;}
+.codefile .kw11 {color: #003399; font-weight: bold;}
+.codefile .kw12 {color: #003399; font-weight: bold;}
+.codefile .kw13 {color: #003399; font-weight: bold;}
+.codefile .kw14 {color: #003399; font-weight: bold;}
+.codefile .kw15 {color: #003399; font-weight: bold;}
+.codefile .kw16 {color: #003399; font-weight: bold;}
+.codefile .kw17 {color: #003399; font-weight: bold;}
+.codefile .kw18 {color: #003399; font-weight: bold;}
+.codefile .kw19 {color: #003399; font-weight: bold;}
+.codefile .kw20 {color: #003399; font-weight: bold;}
+.codefile .kw21 {color: #003399; font-weight: bold;}
+.codefile .kw22 {color: #003399; font-weight: bold;}
+.codefile .kw23 {color: #003399; font-weight: bold;}
+.codefile .kw24 {color: #003399; font-weight: bold;}
+.codefile .kw25 {color: #003399; font-weight: bold;}
+.codefile .kw26 {color: #003399; font-weight: bold;}
+.codefile .kw27 {color: #003399; font-weight: bold;}
+.codefile .kw28 {color: #003399; font-weight: bold;}
+.codefile .kw29 {color: #003399; font-weight: bold;}
+.codefile .kw30 {color: #003399; font-weight: bold;}
+.codefile .kw31 {color: #003399; font-weight: bold;}
+.codefile .kw32 {color: #003399; font-weight: bold;}
+.codefile .kw33 {color: #003399; font-weight: bold;}
+.codefile .kw34 {color: #003399; font-weight: bold;}
+.codefile .kw35 {color: #003399; font-weight: bold;}
+.codefile .kw36 {color: #003399; font-weight: bold;}
+.codefile .kw37 {color: #003399; font-weight: bold;}
+.codefile .kw38 {color: #003399; font-weight: bold;}
+.codefile .kw39 {color: #003399; font-weight: bold;}
+.codefile .kw40 {color: #003399; font-weight: bold;}
+.codefile .kw41 {color: #003399; font-weight: bold;}
+.codefile .kw42 {color: #003399; font-weight: bold;}
+.codefile .kw43 {color: #003399; font-weight: bold;}
+.codefile .kw44 {color: #003399; font-weight: bold;}
+.codefile .kw45 {color: #003399; font-weight: bold;}
+.codefile .kw46 {color: #003399; font-weight: bold;}
+.codefile .kw47 {color: #003399; font-weight: bold;}
+.codefile .kw48 {color: #003399; font-weight: bold;}
+.codefile .kw49 {color: #003399; font-weight: bold;}
+.codefile .kw50 {color: #003399; font-weight: bold;}
+.codefile .kw51 {color: #003399; font-weight: bold;}
+.codefile .kw52 {color: #003399; font-weight: bold;}
+.codefile .kw53 {color: #003399; font-weight: bold;}
+.codefile .kw54 {color: #003399; font-weight: bold;}
+.codefile .kw55 {color: #003399; font-weight: bold;}
+.codefile .kw56 {color: #003399; font-weight: bold;}
+.codefile .kw57 {color: #003399; font-weight: bold;}
+.codefile .kw58 {color: #003399; font-weight: bold;}
+.codefile .kw59 {color: #003399; font-weight: bold;}
+.codefile .kw60 {color: #003399; font-weight: bold;}
+.codefile .kw61 {color: #003399; font-weight: bold;}
+.codefile .kw62 {color: #003399; font-weight: bold;}
+.codefile .kw63 {color: #003399; font-weight: bold;}
+.codefile .kw64 {color: #003399; font-weight: bold;}
+.codefile .kw65 {color: #003399; font-weight: bold;}
+.codefile .kw66 {color: #003399; font-weight: bold;}
+.codefile .kw67 {color: #003399; font-weight: bold;}
+.codefile .kw68 {color: #003399; font-weight: bold;}
+.codefile .kw69 {color: #003399; font-weight: bold;}
+.codefile .kw70 {color: #003399; font-weight: bold;}
+.codefile .kw71 {color: #003399; font-weight: bold;}
+.codefile .kw72 {color: #003399; font-weight: bold;}
+.codefile .kw73 {color: #003399; font-weight: bold;}
+.codefile .kw74 {color: #003399; font-weight: bold;}
+.codefile .kw75 {color: #003399; font-weight: bold;}
+.codefile .kw76 {color: #003399; font-weight: bold;}
+.codefile .kw77 {color: #003399; font-weight: bold;}
+.codefile .kw78 {color: #003399; font-weight: bold;}
+.codefile .kw79 {color: #003399; font-weight: bold;}
+.codefile .kw80 {color: #003399; font-weight: bold;}
+.codefile .kw81 {color: #003399; font-weight: bold;}
+.codefile .kw82 {color: #003399; font-weight: bold;}
+.codefile .kw83 {color: #003399; font-weight: bold;}
+.codefile .kw84 {color: #003399; font-weight: bold;}
+.codefile .kw85 {color: #003399; font-weight: bold;}
+.codefile .kw86 {color: #003399; font-weight: bold;}
+.codefile .kw87 {color: #003399; font-weight: bold;}
+.codefile .kw88 {color: #003399; font-weight: bold;}
+.codefile .kw89 {color: #003399; font-weight: bold;}
+.codefile .kw90 {color: #003399; font-weight: bold;}
+.codefile .kw91 {color: #003399; font-weight: bold;}
+.codefile .kw92 {color: #003399; font-weight: bold;}
+.codefile .kw93 {color: #003399; font-weight: bold;}
+.codefile .kw94 {color: #003399; font-weight: bold;}
+.codefile .kw95 {color: #003399; font-weight: bold;}
+.codefile .kw96 {color: #003399; font-weight: bold;}
+.codefile .kw97 {color: #003399; font-weight: bold;}
+.codefile .kw98 {color: #003399; font-weight: bold;}
+.codefile .kw99 {color: #003399; font-weight: bold;}
+.codefile .kw100 {color: #003399; font-weight: bold;}
+.codefile .kw101 {color: #003399; font-weight: bold;}
+.codefile .kw102 {color: #003399; font-weight: bold;}
+.codefile .kw103 {color: #003399; font-weight: bold;}
+.codefile .kw104 {color: #003399; font-weight: bold;}
+.codefile .kw105 {color: #003399; font-weight: bold;}
+.codefile .kw106 {color: #003399; font-weight: bold;}
+.codefile .kw107 {color: #003399; font-weight: bold;}
+.codefile .kw108 {color: #003399; font-weight: bold;}
+.codefile .kw109 {color: #003399; font-weight: bold;}
+.codefile .kw110 {color: #003399; font-weight: bold;}
+.codefile .kw111 {color: #003399; font-weight: bold;}
+.codefile .kw112 {color: #003399; font-weight: bold;}
+.codefile .kw113 {color: #003399; font-weight: bold;}
+.codefile .kw114 {color: #003399; font-weight: bold;}
+.codefile .kw115 {color: #003399; font-weight: bold;}
+.codefile .kw116 {color: #003399; font-weight: bold;}
+.codefile .kw117 {color: #003399; font-weight: bold;}
+.codefile .kw118 {color: #003399; font-weight: bold;}
+.codefile .kw119 {color: #003399; font-weight: bold;}
+.codefile .kw120 {color: #003399; font-weight: bold;}
+.codefile .kw121 {color: #003399; font-weight: bold;}
+.codefile .kw122 {color: #003399; font-weight: bold;}
+.codefile .kw123 {color: #003399; font-weight: bold;}
+.codefile .kw124 {color: #003399; font-weight: bold;}
+.codefile .kw125 {color: #003399; font-weight: bold;}
+.codefile .kw126 {color: #003399; font-weight: bold;}
+.codefile .kw127 {color: #003399; font-weight: bold;}
+.codefile .kw128 {color: #003399; font-weight: bold;}
+.codefile .kw129 {color: #003399; font-weight: bold;}
+.codefile .kw130 {color: #003399; font-weight: bold;}
+.codefile .kw131 {color: #003399; font-weight: bold;}
+.codefile .kw132 {color: #003399; font-weight: bold;}
+.codefile .kw133 {color: #003399; font-weight: bold;}
+.codefile .kw134 {color: #003399; font-weight: bold;}
+.codefile .kw135 {color: #003399; font-weight: bold;}
+.codefile .kw136 {color: #003399; font-weight: bold;}
+.codefile .kw137 {color: #003399; font-weight: bold;}
+.codefile .kw138 {color: #003399; font-weight: bold;}
+.codefile .kw139 {color: #003399; font-weight: bold;}
+.codefile .kw140 {color: #003399; font-weight: bold;}
+.codefile .kw141 {color: #003399; font-weight: bold;}
+.codefile .kw142 {color: #003399; font-weight: bold;}
+.codefile .kw143 {color: #003399; font-weight: bold;}
+.codefile .kw144 {color: #003399; font-weight: bold;}
+.codefile .kw145 {color: #003399; font-weight: bold;}
+.codefile .kw146 {color: #003399; font-weight: bold;}
+.codefile .kw147 {color: #003399; font-weight: bold;}
+.codefile .kw148 {color: #003399; font-weight: bold;}
+.codefile .kw149 {color: #003399; font-weight: bold;}
+.codefile .kw150 {color: #003399; font-weight: bold;}
+.codefile .kw151 {color: #003399; font-weight: bold;}
+.codefile .kw152 {color: #003399; font-weight: bold;}
+.codefile .kw153 {color: #003399; font-weight: bold;}
+.codefile .kw154 {color: #003399; font-weight: bold;}
+.codefile .kw155 {color: #003399; font-weight: bold;}
+.codefile .kw156 {color: #003399; font-weight: bold;}
+.codefile .kw157 {color: #003399; font-weight: bold;}
+.codefile .kw158 {color: #003399; font-weight: bold;}
+.codefile .kw159 {color: #003399; font-weight: bold;}
+.codefile .kw160 {color: #003399; font-weight: bold;}
+.codefile .kw161 {color: #003399; font-weight: bold;}
+.codefile .kw162 {color: #003399; font-weight: bold;}
+.codefile .kw163 {color: #003399; font-weight: bold;}
+.codefile .kw164 {color: #003399; font-weight: bold;}
+.codefile .kw165 {color: #003399; font-weight: bold;}
+.codefile .kw166 {color: #003399; font-weight: bold;}
+.codefile .co1,
+.codefile .co2,
+.codefile .co3,
+.codefile .coMULTI {color: #a1a100;}
+
+/*
+.codefile .co2 {color: #ff0000; font-style: italic;}
+.codefile .co3 {color: #008000; font-style: italic;}
+.codefile .coMULTI {color: #808080; font-style: italic;}
+*/
+.codefile .es0 {color: #000099; font-weight: bold;}
+.codefile .es2 {color: #000099; font-weight: bold;}
+.codefile .br0 {color: #00AA00;}
+.codefile .sy0 {color: #00AA00;}
+.codefile .st0 {color: #aa0000;}
+.codefile .nu0 {color: #cc66cc;}
+.codefile .re0 {color: #cc00cc;}
+.codefile .re1 {color: #6666ff;}
+.codefile .re2 {color: #3333ff;}
+.codefile .re3 {color: #933;}
+.codefile .ln-xtra, .codefile li.ln-xtra, .codefile div.ln-xtra {background-color: #ffc;}
+.codefile span.xtra { display:block; }
+.codefile .sc-2 {color: #404040;}
+.codefile .sc-1 {color: #808080; font-style: italic;}
+.codefile .sc0 {color: #00bbdd;}
+.codefile .sc1 {color: #ddbb00;}
+.codefile .sc2 {color: #009900;}
+</style>
+
+<style type="text/css" media="print">
+.codefile {
+	border: 1px dashed #2F6FAB;
+}
+
+.codefile pre, .codefile xmp {
+	font-size: 9pt;
+	letter-spacing: -0.5pt;
+	line-height: 1em;
+	margin: 0;
+	padding: 0.25em;
+	overflow: hidden;
+}
+
+.saveforyourrecords, .tooltip {
+	display: none;
+}
+</style>
+</head>
+
+<body>
+    <h1>Homework Turnin</h1>
+
+
+<div id="main">
+    <h2 id="studentinfoheader">
+
+                    <span class="columnlabel">Name:</span>
+            Akshit            K            Patel            <br>
+        
+        <span class="columnlabel">Email:</span>
+        akshit@uw.edu        <br>
+
+                    <span class="columnlabel">Student ID:</span>
+            1561387            <br>
+        
+                    <span class="columnlabel">Section:</span>
+            DC            <br>
+        
+        <span class="columnlabel">Course:</span>
+        CSE         143        16au        <br> <span class="columnlabel">Assignment:</span>
+        a8    </h2>
+
+
+    <h2 id="studentinfoheader">
+        <span class="columnlabel">Receipt ID:</span>
+        c5631ec3f7c8057ac90c197db39da54c    </h2>
+
+<p class="tooltip">It looks like you submitted the exact same files as 
+you submission at Thu 2016/12/08 10:49pm. No need to resubmit your files
+ unless you need to change your program.</p>
+
+<!--
+<div class="warning">
+    NOTE: Emailed receipts temporarily disabled because of a server problem.  Please save a copy of this web page because you won't be receiving a receipt email.
+</div>
+-->
+
+
+    <h3 class="success">Turnin Successful!</h3>
+
+    <p class="saveforyourrecords">
+        Please <strong style="color: #090; background-color: #ffb">save or
+            print a copy of this page</strong> for your records. A 
+receipt has also been emailed to you, but you should still save or print
+ a copy of this web page to make certain that you have proof of your 
+turnin. <strong>If
+            your files become lost or damaged and you do not have any record of
+            your receipt, we will not be able to give you any credit for your
+            work.</strong>
+    </p>
+
+    
+    <p>The following file(s) were received:</p>
+
+    
+
+        <div class="codefile">
+        <h2>
+                HuffmanCode.java &nbsp; &nbsp;
+                <span class="aside">(10196 bytes)</span>
+        </h2>
+
+        <pre><pre class="java5"><ol><li class="li1"><div class="de1"><span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;* @author Akshit Patel</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;* @Date 1/2/2016 </span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;* CSE 143D DC </span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;* TA: Melissa Medsker </span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;* HW #8 Huffman Coding</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;*/</span></div></li><li class="li1"><div class="de1"><span class="kw2">import</span> <span class="co2">java.io.PrintStream</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><span class="kw2">import</span> <span class="co2">java.util.*</span><span class="sy0">;</span></div></li><li class="li2"><div class="de2">&nbsp;</div></li><li class="li1"><div class="de1"><span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;* HuffmanCode class represents a huffman code for a particular message. It</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;* compresses the message and provides useful method to save the compression and</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;* also method to decompress into original message.</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;*</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;*/</span></div></li><li class="li1"><div class="de1"><span class="kw2">public</span> <span class="kw2">class</span> HuffmanCode <span class="br0">{</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li1"><div class="de1">    <span class="co3">/**</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    * Reference to the huffman code tree of the given message.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    */</span></div></li><li class="li1"><div class="de1">    <span class="kw2">private</span> HuffmanNode huffmanRoot<span class="sy0">;</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li1"><div class="de1">    <span class="co3">/**</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    * Constructs a new HuffmanCode object from a given array of ASCII</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * characters as indices and the data value its frequency.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * </span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * @param frequencies array of integers representing the frequency or the</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        count of occurrence of a particular ASCII character, where the</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    *        ASCII character is the index of the given array. The frequencies</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        need to be positive i.e. &gt;= 0</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    */</span></div></li><li class="li1"><div class="de1">    <span class="kw2">public</span> HuffmanCode<span class="br0">(</span><span class="kw3">int</span><span class="br0">[</span><span class="br0">]</span> frequencies<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">        <span class="co1">// priority queue to prioritize characters according to frequency.</span></div></li><li class="li2"><div class="de2">        <span class="kw46">Queue</span><span class="sy0">&lt;</span>HuffmanNode<span class="sy0">&gt;</span> sort = <span class="kw2">new</span> <span class="kw46">PriorityQueue</span><span class="sy0">&lt;</span>HuffmanNode<span class="sy0">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="co1">// add the characters with frequency greater than 0 to priority queue.</span></div></li><li class="li1"><div class="de1">        <span class="kw1">for</span> <span class="br0">(</span><span class="kw3">int</span> i = <span class="nu0">0</span><span class="sy0">;</span> i <span class="sy0">&lt;</span> frequencies.<span class="me1">length</span><span class="sy0">;</span> i++<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            <span class="kw1">if</span> <span class="br0">(</span>frequencies<span class="br0">[</span>i<span class="br0">]</span> <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">                sort.<span class="me1">add</span><span class="br0">(</span><span class="kw2">new</span> HuffmanNode<span class="br0">(</span><span class="br0">(</span><span class="kw3">char</span><span class="br0">)</span> i, frequencies<span class="br0">[</span>i<span class="br0">]</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li2"><div class="de2">            <span class="br0">}</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">        <span class="co1">// make the huffman code by combining elements.</span></div></li><li class="li1"><div class="de1">        <span class="kw1">while</span> <span class="br0">(</span>sort.<span class="me1">size</span><span class="br0">(</span><span class="br0">)</span> <span class="sy0">&gt;</span> <span class="nu0">1</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            HuffmanNode firstData = sort.<span class="me1">remove</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li2"><div class="de2">            HuffmanNode secondData = sort.<span class="me1">remove</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="co1">// add the combination of first and second element to the queue.</span></div></li><li class="li1"><div class="de1">            <span class="co1">// new parent has no data value other than combined frequency.</span></div></li><li class="li1"><div class="de1">            sort.<span class="me1">add</span><span class="br0">(</span><span class="kw2">new</span> HuffmanNode<span class="br0">(</span><span class="st0">'<span class="es0">\0</span>'</span>,</div></li><li class="li1"><div class="de1">                    firstData.<span class="me1">frequency</span> + secondData.<span class="me1">frequency</span>, firstData,</div></li><li class="li2"><div class="de2">                    secondData<span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">        <span class="co1">// get the last remaining element which is the huffman code.</span></div></li><li class="li1"><div class="de1">        <span class="kw2">this</span>.<span class="me1">huffmanRoot</span> = sort.<span class="me1">remove</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">    <span class="br0">}</span></div></li><li class="li2"><div class="de2">&nbsp;</div></li><li class="li1"><div class="de1">    <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * Constructs a new HuffmanCode object given a scanner to read from a</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * previously constructed code from .code file.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * </span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    * @param input scanner representing a previously constructed .code file.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        Scanner should not be null and must have data encoded in legal,</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        existing and valid huffman standard format</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    */</span></div></li><li class="li1"><div class="de1">    <span class="kw2">public</span> HuffmanCode<span class="br0">(</span><span class="kw46">Scanner</span> input<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li2"><div class="de2">        <span class="co1">// scan until no elements left.</span></div></li><li class="li1"><div class="de1">        <span class="kw1">while</span> <span class="br0">(</span>input.<span class="me1">hasNextLine</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            <span class="co1">// get the ASCII character.</span></div></li><li class="li1"><div class="de1">            <span class="kw3">int</span> n = <span class="kw21">Integer</span>.<span class="me1">parseInt</span><span class="br0">(</span>input.<span class="me1">nextLine</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="co1">// get the huffman code path directions for the character.</span></div></li><li class="li2"><div class="de2">            <span class="kw21">String</span> code = input.<span class="me1">nextLine</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="co1">// construct the tree.</span></div></li><li class="li1"><div class="de1">            <span class="kw2">this</span>.<span class="me1">huffmanRoot</span> = huffmanTree<span class="br0">(</span><span class="kw2">this</span>.<span class="me1">huffmanRoot</span>, <span class="br0">(</span><span class="kw3">char</span><span class="br0">)</span> n, code<span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">    <span class="br0">}</span></div></li><li class="li2"><div class="de2">&nbsp;</div></li><li class="li1"><div class="de1">    <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * Constructs the huffman code tree for a HuffmanCode object when given with</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * the directions to store the given ASCII character. The frequency of all</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * nodes are set to default value of zero. Direction refers to the string</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    * sequence of 1s and 0s representing the right and left node of tree</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * respectively.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * </span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * @param current HuffmanNode representing the node of huffman tree. Used to</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        construct the tree without changing the overall root of the tree</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    * @param letter character representing ASCII value to input into the</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        huffman tree. The default value of the parent node is set to \0</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * @param code String representing the path to store the character in the</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        huffman tree. String cannot be null. String has to be combinations</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        of 1s or 0s or both</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    * @return HuffmanNode of the huffman tree made for this HuffmanCode object</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    */</span></div></li><li class="li1"><div class="de1">    <span class="kw2">private</span> <span class="kw2">static</span> HuffmanNode huffmanTree<span class="br0">(</span>HuffmanNode current, <span class="kw3">char</span> letter,</div></li><li class="li1"><div class="de1">                                           <span class="kw21">String</span> code<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">        <span class="co1">// if no more path details then we have a value to store as leaf.</span></div></li><li class="li2"><div class="de2">        <span class="kw1">if</span> <span class="br0">(</span>code.<span class="me1">isEmpty</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            <span class="kw2">return</span> <span class="kw2">new</span> HuffmanNode<span class="br0">(</span>letter, <span class="nu0">0</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">        <span class="co1">// construct a new parent if current is null.</span></div></li><li class="li1"><div class="de1">        <span class="kw1">if</span> <span class="br0">(</span>current == <span class="kw4">null</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li2"><div class="de2">            current = <span class="kw2">new</span> HuffmanNode<span class="br0">(</span><span class="st0">'<span class="es0">\0</span>'</span>, <span class="nu0">0</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">        <span class="co1">// if path has 0 go left branch else go right for 1.</span></div></li><li class="li1"><div class="de1">        <span class="kw1">if</span> <span class="br0">(</span>code.<span class="me1">charAt</span><span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span> == <span class="st0">'0'</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            current.<span class="me1">left</span> = huffmanTree<span class="br0">(</span>current.<span class="me1">left</span>, letter, code.<span class="me1">substring</span><span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li2"><div class="de2">        <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            current.<span class="me1">right</span> = huffmanTree<span class="br0">(</span>current.<span class="me1">right</span>, letter,</div></li><li class="li1"><div class="de1">                                        code.<span class="me1">substring</span><span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">        <span class="kw2">return</span> current<span class="sy0">;</span></div></li><li class="li2"><div class="de2">    <span class="br0">}</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li1"><div class="de1">    <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * Store the current huffman codes for the HuffmanCode object in standard</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * format to a given output stream.</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    * </span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * @param output PrintStream representing the .code file to store the</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        huffman code in standard format.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    */</span></div></li><li class="li1"><div class="de1">    <span class="kw2">public</span> <span class="kw3">void</span> save<span class="br0">(</span><span class="kw20">PrintStream</span> output<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li2"><div class="de2">        <span class="kw2">this</span>.<span class="me1">save</span><span class="br0">(</span>output, <span class="kw2">this</span>.<span class="me1">huffmanRoot</span>, <span class="st0">""</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">    <span class="br0">}</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li1"><div class="de1">    <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * Stores the huffman code tree of the current HuffmanCode object in</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    * standard format to a given output stream.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * </span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * @param output PrintStream representing the .code file to store the</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        huffman code in standard format.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * @param current HuffmanNode representing the node of huffman tree. Used to</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    *        traverse through to get the character path and the character</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        itself</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * @param code String representation of the path of the character in the</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        huffman tree. Initially an empty string. String should not be null</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    */</span></div></li><li class="li2"><div class="de2">    <span class="kw2">private</span> <span class="kw3">void</span> save<span class="br0">(</span><span class="kw20">PrintStream</span> output, HuffmanNode current, <span class="kw21">String</span> code<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">        <span class="kw1">if</span> <span class="br0">(</span>current <span class="sy0">!</span>= <span class="kw4">null</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            <span class="co1">// if a leaf then we have the character and the path to store.</span></div></li><li class="li1"><div class="de1">            <span class="kw1">if</span> <span class="br0">(</span>current.<span class="me1">left</span> == <span class="kw4">null</span> <span class="sy0">&amp;&amp;</span> current.<span class="me1">right</span> == <span class="kw4">null</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">                <span class="co1">// store character as int.</span></div></li><li class="li2"><div class="de2">                output.<span class="me1">println</span><span class="br0">(</span><span class="br0">(</span><span class="kw3">int</span><span class="br0">)</span> current.<span class="me1">data</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">                output.<span class="me1">println</span><span class="br0">(</span>code<span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">                <span class="co1">// go left and add 0 to path or go right and add 1 to path.</span></div></li><li class="li1"><div class="de1">                <span class="kw2">this</span>.<span class="me1">save</span><span class="br0">(</span>output, current.<span class="me1">left</span>, code + <span class="st0">"0"</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li2"><div class="de2">                <span class="kw2">this</span>.<span class="me1">save</span><span class="br0">(</span>output, current.<span class="me1">right</span>, code + <span class="st0">"1"</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="br0">}</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">    <span class="br0">}</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li2"><div class="de2">    <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * Decompresses the given input stream of the compressed message and an</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * output stream to store the original message</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * </span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * @param input BitInputStream representing the compressed .short file.</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    *        Should not be null. Used with HuffmanCode object to decompress the</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        compressed message.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * @param output PrintStream representing a .new file to store the decoded</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    *        message.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    */</span></div></li><li class="li2"><div class="de2">    <span class="kw2">public</span> <span class="kw3">void</span> translate<span class="br0">(</span>BitInputStream input, <span class="kw20">PrintStream</span> output<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">        HuffmanNode current = <span class="kw2">this</span>.<span class="me1">huffmanRoot</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="co1">// decompress until no bits left.</span></div></li><li class="li1"><div class="de1">        <span class="kw1">while</span> <span class="br0">(</span>input.<span class="me1">hasNextBit</span><span class="br0">(</span><span class="br0">)</span> <span class="sy0">&amp;&amp;</span> current <span class="sy0">!</span>= <span class="kw4">null</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            <span class="co1">// if current bit is 0 then go left else go right for 1.</span></div></li><li class="li2"><div class="de2">            <span class="kw1">if</span> <span class="br0">(</span>input.<span class="me1">nextBit</span><span class="br0">(</span><span class="br0">)</span> == <span class="nu0">0</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">                current = current.<span class="me1">left</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">                current = current.<span class="me1">right</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="br0">}</span></div></li><li class="li2"><div class="de2">            <span class="co1">// if leaf then we have a character to output.</span></div></li><li class="li1"><div class="de1">            <span class="kw1">if</span> <span class="br0">(</span>current.<span class="me1">left</span> == <span class="kw4">null</span> <span class="sy0">&amp;&amp;</span> current.<span class="me1">right</span> == <span class="kw4">null</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">                output.<span class="me1">write</span><span class="br0">(</span>current.<span class="me1">data</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">                <span class="co1">// change the reference back to root to look for next bit.</span></div></li><li class="li1"><div class="de1">                current = <span class="kw2">this</span>.<span class="me1">huffmanRoot</span><span class="sy0">;</span></div></li><li class="li2"><div class="de2">            <span class="br0">}</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">    <span class="br0">}</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li1"><div class="de1">    <span class="co3">/**</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;    * HuffmanNode class stores a single node of a binary tree representing an</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * int and a character. It also provides a method to compare the int data of</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    * this node to other given node.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;    */</span></div></li><li class="li1"><div class="de1">    <span class="kw2">private</span> <span class="kw2">static</span> <span class="kw2">class</span> HuffmanNode <span class="kw2">implements</span> <span class="kw21">Comparable</span><span class="sy0">&lt;</span>HuffmanNode<span class="sy0">&gt;</span> <span class="br0">{</span></div></li><li class="li2"><div class="de2">        <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * character to store in the node.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        */</span></div></li><li class="li1"><div class="de1">        <span class="kw2">public</span> <span class="kw2">final</span> <span class="kw3">char</span> data<span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="co3">/**</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;        * int to store in the node.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        */</span></div></li><li class="li1"><div class="de1">        <span class="kw2">public</span> <span class="kw2">final</span> <span class="kw3">int</span> frequency<span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * represents the left node of the binary tree</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;        */</span></div></li><li class="li1"><div class="de1">        <span class="kw2">public</span> HuffmanNode left<span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * represents the right node of the binary tree</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        */</span></div></li><li class="li2"><div class="de2">        <span class="kw2">public</span> HuffmanNode right<span class="sy0">;</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li1"><div class="de1">        <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * constructs a leaf node with the given character and int data for the</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * node.</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;        * </span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * @param data character representing the ASCII character to be stored</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        *        in the node.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * @param frequency int representing the frequency of the ASCII</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        *        character to be stored in the node.</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;        */</span></div></li><li class="li1"><div class="de1">        <span class="kw2">public</span> HuffmanNode<span class="br0">(</span><span class="kw3">char</span> data, <span class="kw3">int</span> frequency<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            <span class="kw2">this</span><span class="br0">(</span>data, frequency, <span class="kw4">null</span>, <span class="kw4">null</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li><li class="li2"><div class="de2">        <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * Constructs a branch node with given character and int data with left</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * subtree and right subtree.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * </span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * @param data character representing the ASCII character to be stored</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;        *        in the node.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * @param frequency int representing the frequency of the ASCII</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        *        character to be stored in the node.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * @param left HuffmanNode representing the left binary subtree.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * @param right HuffmanNode representing the right binary subtree.</span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;        */</span></div></li><li class="li1"><div class="de1">        <span class="kw2">public</span> HuffmanNode<span class="br0">(</span><span class="kw3">char</span> data,</div></li><li class="li1"><div class="de1">                           <span class="kw3">int</span> frequency,</div></li><li class="li1"><div class="de1">                           HuffmanNode left,</div></li><li class="li1"><div class="de1">                           HuffmanNode right<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li2"><div class="de2">            <span class="kw2">this</span>.<span class="me1">data</span> = data<span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="kw2">this</span>.<span class="me1">frequency</span> = frequency<span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="kw2">this</span>.<span class="me1">left</span> = left<span class="sy0">;</span></div></li><li class="li1"><div class="de1">            <span class="kw2">this</span>.<span class="me1">right</span> = right<span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li2"><div class="de2">&nbsp;</div></li><li class="li1"><div class="de1">        <span class="co3">/**</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * Compares the frequency of this HuffmanNode to an other given</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * HuffmanNode.</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        * </span></div></li><li class="li2"><div class="de2"><span class="co3">&nbsp;        * @return a negative integer, zero, or a positive integer as this</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        *         HuffmanNode frequency is less than, equal to, or greater than</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        *         the given HuffmanNode frequency</span></div></li><li class="li1"><div class="de1"><span class="co3">&nbsp;        */</span></div></li><li class="li1"><div class="de1">        @<span class="kw21">Override</span></div></li><li class="li2"><div class="de2">        <span class="kw2">public</span> <span class="kw3">int</span> compareTo<span class="br0">(</span>HuffmanNode other<span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">            <span class="kw2">return</span> <span class="kw21">Integer</span>.<span class="me1">compare</span><span class="br0">(</span><span class="kw2">this</span>.<span class="me1">frequency</span>, other.<span class="me1">frequency</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">        <span class="br0">}</span></div></li><li class="li1"><div class="de1">    <span class="br0">}</span></div></li><li class="li1"><div class="de1"><span class="br0">}</span></div></li><li class="li2"><div class="de2">&nbsp;</div></li></ol></pre></pre>
+    </div>
+
+        
+        <div class="codefile">
+        <h2>
+                secretmessage.short &nbsp; &nbsp;
+                <span class="aside">(906 bytes)</span>
+        </h2>
+
+        <pre>(binary file)</pre>
+    </div>
+
+        
+        <div class="codefile">
+        <h2>
+                secretmessage.code &nbsp; &nbsp;
+                <span class="aside">(889 bytes)</span>
+        </h2>
+
+        <pre>115
+0000
+99
+00010
+13
+000110
+10
+000111
+101
+001
+98
+0100000
+44
+0100001
+103
+010001
+112
+01001
+104
+0101
+114
+0110
+111
+0111
+97
+1000
+109
+100100
+36
+1001010000
+56
+1001010001
+50
+100101001
+40
+100101010
+69
+100101011
+118
+1001011
+102
+100110
+107
+100111
+116
+1010
+110
+10110
+119
+101110
+120
+101111000
+41
+101111001
+73
+1011110100
+47
+10111101010
+70
+10111101011
+82
+10111101100
+83
+10111101101
+39
+1011110111
+85
+1011111000
+37
+1011111001
+45
+101111101
+65
+101111110
+49
+1011111110
+66
+10111111110
+68
+10111111111
+108
+11000
+46
+1100100
+121
+1100101
+117
+110011
+58
+1101000000
+89
+1101000001
+87
+11010000100
+63
+11010000101
+57
+11010000110
+80
+11010000111
+72
+110100010
+71
+11010001100
+75
+11010001101
+76
+11010001110
+77
+11010001111
+48
+110100100
+53
+1101001010
+78
+1101001011
+84
+11010011
+100
+110101
+105
+11011
+32
+111
+</pre>
+    </div>
+
+        
+</div>
+
+
+    <div id="loading">One moment...</div>
+    <pre id="dumptarget"></pre>
+
+    
+            <script async="" src="Homework%20Turnin_files/analytics.js"></script><script src="Homework%20Turnin_files/additional.js" type="text/javascript"></script>
+
+                    <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-78977559-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    
+    
+
+
+</body></html>

@@ -1,0 +1,75 @@
+public class Tree {
+
+    private TreeNode root;
+
+    public Tree() {
+        this.root = null;
+    }
+    
+    public Tree(int[] a) {
+        this.root = construct(a,0, a.length-1);
+    }
+
+    private static class TreeNode {
+        TreeNode left;
+        int item;
+        TreeNode right;
+
+        TreeNode(int item){
+            this(item, null, null);
+        }
+        TreeNode(int item, TreeNode left, TreeNode right) {
+            this.left = left;
+            this.right = right;
+            this.item = item; 
+        }
+    }
+    
+    private TreeNode construct(int[] data, int start, int stop) {
+        if (start > stop) {
+            return null;
+        }
+        int mid = (start + stop + 1) / 2;
+        return new TreeNode(data[mid], construct(data, start, mid - 1),
+                            construct(data, mid + 1, stop));
+    }
+
+    public int count(){
+        return count(this.root, 0);
+    }
+    
+    private int count(TreeNode current, int i) {
+        if(current!=null){
+            if(current.item %2 == 0){
+                return 0;
+            }else if(current.item %2 == 1){
+                return count(current.left, i+1)+count(current.right, i);
+            }
+        }
+        return i;
+    }
+
+    /*public void addSearch(String item) {
+        if (root == null) {
+            root = new TreeNode(null, item, null);
+            return;
+        }
+
+        TreeNode node = root;
+        while (true) {
+            if (item.compareTo(node.item) < 0) {
+                if (node.left == null) {
+                    node.left = new TreeNode(null, item, null);
+                    break;
+                }
+                node = node.left;
+            } else {
+                if (node.right == null) {
+                    node.right = new TreeNode(null, item, null);
+                    break;
+                }
+                node = node.right;
+            }
+        }
+    }*/
+}

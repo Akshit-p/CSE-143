@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;HW 2 HTML Manager&apos;" deleteContents="true" description="Delete resource &apos;HW 2 HTML Manager&apos;" element1="/HW 2 HTML Manager" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1475897452438"/>
+</session>

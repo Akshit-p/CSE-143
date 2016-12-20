@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;prev&apos; in &apos;AssassinManager.AssassinManager(...)&apos; to &apos;curr&apos;&#x0D;&#x0A;- Original project: &apos;HW 3 AssassinManager&apos;&#x0D;&#x0A;- Original element: &apos;AssassinManager.AssassinManager(List&lt;String&gt;).prev&apos;&#x0D;&#x0A;- Renamed element: &apos;prev&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;prev&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{AssassinManager.java[AssassinManager~AssassinManager~QList\&lt;QString;&gt;;@prev!805!839!818!821!QAssassinNode;!0!false" name="curr" references="true" stamp="1476678453103" version="1.0"/>
+</session>

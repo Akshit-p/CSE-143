@@ -1,0 +1,12 @@
+import java.util.*;
+
+public class Test {
+   public static void main(String[] args){
+      int a[] = {4,3,5,2,1,17,16,8,7};  
+      Tree t1 = new Tree(a);
+      int b[] = {11,10,12,13,9,15,14};
+      Tree t2 = new Tree(b);
+      t1.fight(t2);
+      System.out.print(t1.);
+   }
+}

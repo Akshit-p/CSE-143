@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class Test {
+   public static void main(String[] args){
+      Map<String, String> m = new TreeMap<>();
+      m.put("apple", "apple");
+      m.put("corn", "apple");
+      m.put("peach", "peach");
+      m.put("pie", "fruit");
+      m.put("pumpkin", "peach");
+      mystery(m);
+      System.out.println(0/0);
+      
+   }
+   
+   public static void mystery(Map<String, String> m){
+       Set<String> s = new TreeSet<>();
+       for(String key: m.keySet()){
+           if(!m.get(key).equals(key)){
+               s.add(m.get(key));
+           }else{
+               s.remove(m.get(key));
+           }
+       }
+       System.out.println(s);
+   }
+}

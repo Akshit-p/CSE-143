@@ -1,0 +1,54 @@
+public class Tree {
+
+    private TreeNode root;
+
+    public Tree() {
+      this.root = null;
+    }
+
+    /**
+     * Will create a BST imperative on order of elements in the array
+     */
+    public Tree(String[] a) {
+        this();
+        for (String i : a) {
+            addSearch(i);
+        }
+    }
+
+    private static class TreeNode {
+        TreeNode left;
+        String item;
+        TreeNode right;
+
+        TreeNode(TreeNode left, String item, TreeNode right) {
+            this.left = left;
+            this.right = right;
+            this.item = item; 
+        }
+    }
+    
+    public void addSearch(String item) {
+        if (root == null) {
+            root = new TreeNode(null, item, null);
+            return;
+        }
+
+        TreeNode node = root;
+        while (true) {
+            if (item.compareTo(node.item) < 0) {
+                if (node.left == null) {
+                    node.left = new TreeNode(null, item, null);
+                    break;
+                }
+                node = node.left;
+            } else {
+                if (node.right == null) {
+                    node.right = new TreeNode(null, item, null);
+                    break;
+                }
+                node = node.right;
+            }
+        }
+    }
+}

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://gradeit.cs.washington.edu/uwcse/turnin/code/turnin.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Homework Turnin</title>
+<style type="text/css">
+/* Grade-It homework turnin page style sheet */
+
+a {
+	color: #aa4400;
+	text-decoration: none;
+}
+
+a:hover {
+	background-color: #FFFF99;
+	text-decoration: underline;
+}
+
+a img {
+	border-width: 0;
+}
+
+.aside {
+	font-size: small;
+}
+
+body {
+	background-color: #ffffff;
+	color: #000000;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida", "Helvetica Neue", "Helvetica", Verdana, Arial, sans-serif;
+	font-size: 10pt;
+	padding: 1em;
+}
+
+#cheatpolicyexplain {
+	color: #800;
+	font-weight: bold;
+}
+
+.cheatwarning {
+	text-indent: -2em;
+	margin-left: 3em;
+}
+
+.deemphasized {
+	color: #666666;
+}
+
+dt {
+	font-weight: bold;
+}
+
+.emphasized {
+	font-weight: bold;
+}
+
+.error, .errorfixed {
+	background-color: #FFFFDD;
+	border: thin solid gray;
+	font-weight: bold;
+}
+
+.error {
+	color: red;
+}
+
+.errorfixed {
+	color: #000099;
+}
+
+#errormessage, .error, #warningmessage, .warning {
+	font-size: 110%;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	margin: 1em;
+}
+
+#errormessage, .error {
+	background-color: #ffe8e8;
+	border: 3px solid #777777;
+	color: red;
+	font-size: larger;
+}
+
+.excitingnews {
+	background-color: #eeeeff;
+	border: 2px dashed #00AA00;
+	overflow: hidden;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.filename {
+	text-decoration: none;
+}
+
+form, #main {
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 70em;
+}
+
+form td, form th {
+	padding-top: 0.3em;
+}
+
+h1 {
+	margin: 0em;
+	/* margin-top: 0.25em; */
+	padding-top: 0.25em;
+}
+
+.highlight {
+	background-color: yellow;
+}
+
+img {
+	vertical-align: bottom;
+}
+
+img.icon {
+	height: 16px;
+	width: 16px;
+	vertical-align: baseline;
+}
+
+img.imageicon, img.sidebaricon {
+	border: none;
+	height: 16px;
+	width: 16px;
+	vertical-align: middle;
+}
+
+input[readonly], input[readonly="readonly"] {
+	background-color: #DDD;
+	color: #555;
+}
+
+.leftcolumn {
+	padding-right: 20px;
+	text-align: left;
+	vertical-align: top;
+	width: 150px;
+}
+
+#loading {
+	display: none;
+}
+
+.noteslist li {
+	margin-bottom: 0.5em;
+}
+
+.saveforyourrecords {
+	background-color: #ffc;
+	border: 1px dashed red;
+	padding: 0.5em;
+}
+
+.separated {
+	padding-bottom: 2em;
+}
+
+.separatedtop {
+	padding-top: 2em;
+}
+
+.success {
+	color: #070;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+.acceptedproblems {
+	color: #730;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+table {
+	margin: 0px;
+	padding: 0px;
+	border-width: 0px;
+	color: #000000;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+td, th {
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+td.spaced {
+	padding-right: 20px;
+}
+
+tr.evenrow {
+	background-color: #EEEEEE;
+}
+
+.turninlink {
+	background-color: #EEEEEE;
+	border: 2px solid #CCCCCC;
+	float: right;
+	margin-right: 1em;
+	padding: 0.5em;
+}
+
+.urgent {
+	color: #990000;
+	font-weight: bold;
+}
+
+/* ------------------- */
+button:hover, input[type="submit"]:hover {
+	color: #666600;
+}
+
+h1 {
+	padding: 0em;
+	padding-top: 0.25em;
+	text-align: center;
+}
+
+h2 {
+	line-height: 16pt;
+}
+
+h2.spaced {
+	margin-top: 2em;
+}
+
+.invalid {
+	background-color: #ffff00;
+}
+
+#warningmessage, .warning {
+	background-color: #fff8dd;
+	border: 3px solid rgb(125, 85, 0) /* rgb(205, 135, 0) */;
+	color: rgb(125, 85, 0);
+	font-size: larger;
+}
+
+#errormessage p, #warningmessage p, .warning p {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+.failure {
+	color: red;
+	font-weight: bold;
+}
+
+.filename {
+	font-family: monospace;
+}
+
+hr {
+	margin-top: 2em;
+}
+
+input[type="submit"] {
+	font-family: Arial, sans-serif;
+	font-size: 18pt;
+	font-weight: bold;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.nametable {
+	 border: none;
+	 border-collapse: collapse;
+	 margin: 0em;
+	 padding: 0em;
+}
+
+.nametable td, .nametable th, td.filename {
+	padding-right: 0.5em;
+}
+
+#submitarea {
+	margin-bottom: 2em;
+	margin-top: 2em;
+	text-align: center;
+}
+
+.surveyarea, .tabcell {
+	display: none;
+}
+
+th {
+	padding-right: 2em;
+	text-align: left;
+}
+
+/* */
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
+.codefile {
+	border: 2px solid #2F6FAB;
+	margin-bottom: 1em;
+	padding: 0;
+}
+
+.codefile h2 {
+	background-color: #2F6FAB;
+	color: white;
+	margin: 0;
+	padding: 0 0.5em 0.25em;
+}
+
+.codefile pre, .codefile xmp {
+	background-color: #F9F9F9;
+	line-height: 1.05em;
+	margin: 0;
+	padding: 0.75em;
+	overflow: auto;
+}
+
+.columnlabel {
+	float: left;
+	font-weight: bold;
+	width: 9em;
+}
+
+.errormessage, .warningmessage {
+	background-color: #FFEEEE;
+	border: 2px dashed red;
+	margin-left: 2em;
+	margin-right: 2em;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.errormessage h2, .warningmessage h2 {
+	color: red;
+	font-size: larger;
+}
+
+.errormessage pre {
+	font-size: larger;
+	font-weight: bold;
+}
+
+h1 {
+	background-color: #EEEEEE;
+	border-bottom: 2px solid gray;
+	text-align: center;
+}
+
+h1, h2, h3 {
+	white-space: nowrap;
+}
+
+.info {
+	text-align: center;
+}
+
+#main {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+#studentinfoheader {
+	font-size: 12pt;
+	font-weight: normal;
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 20em;
+	width: 20em;
+}
+
+.tooltip {
+	background-color: #FFFFAA;
+	border: 1px solid #999999;
+	margin: 0.5em;
+}
+
+.warningmessage {
+	background-color: #FFFFDD;
+	border: 2px dashed yellow;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+/* geshi styles */
+.codefile .imp {font-weight: bold; color: red;}
+.codefile li, .codefile .li1 {font-weight: normal; vertical-align:top;}
+.codefile .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.codefile .li2 {font-weight: bold; vertical-align:top;}
+.codefile .kw1 {color: #000088; font-weight: bold;}
+.codefile .kw2 {color: #000088; font-weight: bold;}
+.codefile .kw1 {color: #000000;  font-weight: bold;}
+.codefile .kw2 {color: #000000; font-weight: bold;}
+.codefile .kw3 {color: #006600; font-weight: bold;}
+.codefile .kw4 {color: #006600; font-weight: bold;}
+.codefile .kw5 {color: #003399; font-weight: bold;}
+.codefile .kw6 {color: #003399; font-weight: bold;}
+.codefile .kw7 {color: #003399; font-weight: bold;}
+.codefile .kw8 {color: #003399; font-weight: bold;}
+.codefile .kw9 {color: #003399; font-weight: bold;}
+.codefile .kw10 {color: #003399; font-weight: bold;}
+.codefile .kw11 {color: #003399; font-weight: bold;}
+.codefile .kw12 {color: #003399; font-weight: bold;}
+.codefile .kw13 {color: #003399; font-weight: bold;}
+.codefile .kw14 {color: #003399; font-weight: bold;}
+.codefile .kw15 {color: #003399; font-weight: bold;}
+.codefile .kw16 {color: #003399; font-weight: bold;}
+.codefile .kw17 {color: #003399; font-weight: bold;}
+.codefile .kw18 {color: #003399; font-weight: bold;}
+.codefile .kw19 {color: #003399; font-weight: bold;}
+.codefile .kw20 {color: #003399; font-weight: bold;}
+.codefile .kw21 {color: #003399; font-weight: bold;}
+.codefile .kw22 {color: #003399; font-weight: bold;}
+.codefile .kw23 {color: #003399; font-weight: bold;}
+.codefile .kw24 {color: #003399; font-weight: bold;}
+.codefile .kw25 {color: #003399; font-weight: bold;}
+.codefile .kw26 {color: #003399; font-weight: bold;}
+.codefile .kw27 {color: #003399; font-weight: bold;}
+.codefile .kw28 {color: #003399; font-weight: bold;}
+.codefile .kw29 {color: #003399; font-weight: bold;}
+.codefile .kw30 {color: #003399; font-weight: bold;}
+.codefile .kw31 {color: #003399; font-weight: bold;}
+.codefile .kw32 {color: #003399; font-weight: bold;}
+.codefile .kw33 {color: #003399; font-weight: bold;}
+.codefile .kw34 {color: #003399; font-weight: bold;}
+.codefile .kw35 {color: #003399; font-weight: bold;}
+.codefile .kw36 {color: #003399; font-weight: bold;}
+.codefile .kw37 {color: #003399; font-weight: bold;}
+.codefile .kw38 {color: #003399; font-weight: bold;}
+.codefile .kw39 {color: #003399; font-weight: bold;}
+.codefile .kw40 {color: #003399; font-weight: bold;}
+.codefile .kw41 {color: #003399; font-weight: bold;}
+.codefile .kw42 {color: #003399; font-weight: bold;}
+.codefile .kw43 {color: #003399; font-weight: bold;}
+.codefile .kw44 {color: #003399; font-weight: bold;}
+.codefile .kw45 {color: #003399; font-weight: bold;}
+.codefile .kw46 {color: #003399; font-weight: bold;}
+.codefile .kw47 {color: #003399; font-weight: bold;}
+.codefile .kw48 {color: #003399; font-weight: bold;}
+.codefile .kw49 {color: #003399; font-weight: bold;}
+.codefile .kw50 {color: #003399; font-weight: bold;}
+.codefile .kw51 {color: #003399; font-weight: bold;}
+.codefile .kw52 {color: #003399; font-weight: bold;}
+.codefile .kw53 {color: #003399; font-weight: bold;}
+.codefile .kw54 {color: #003399; font-weight: bold;}
+.codefile .kw55 {color: #003399; font-weight: bold;}
+.codefile .kw56 {color: #003399; font-weight: bold;}
+.codefile .kw57 {color: #003399; font-weight: bold;}
+.codefile .kw58 {color: #003399; font-weight: bold;}
+.codefile .kw59 {color: #003399; font-weight: bold;}
+.codefile .kw60 {color: #003399; font-weight: bold;}
+.codefile .kw61 {color: #003399; font-weight: bold;}
+.codefile .kw62 {color: #003399; font-weight: bold;}
+.codefile .kw63 {color: #003399; font-weight: bold;}
+.codefile .kw64 {color: #003399; font-weight: bold;}
+.codefile .kw65 {color: #003399; font-weight: bold;}
+.codefile .kw66 {color: #003399; font-weight: bold;}
+.codefile .kw67 {color: #003399; font-weight: bold;}
+.codefile .kw68 {color: #003399; font-weight: bold;}
+.codefile .kw69 {color: #003399; font-weight: bold;}
+.codefile .kw70 {color: #003399; font-weight: bold;}
+.codefile .kw71 {color: #003399; font-weight: bold;}
+.codefile .kw72 {color: #003399; font-weight: bold;}
+.codefile .kw73 {color: #003399; font-weight: bold;}
+.codefile .kw74 {color: #003399; font-weight: bold;}
+.codefile .kw75 {color: #003399; font-weight: bold;}
+.codefile .kw76 {color: #003399; font-weight: bold;}
+.codefile .kw77 {color: #003399; font-weight: bold;}
+.codefile .kw78 {color: #003399; font-weight: bold;}
+.codefile .kw79 {color: #003399; font-weight: bold;}
+.codefile .kw80 {color: #003399; font-weight: bold;}
+.codefile .kw81 {color: #003399; font-weight: bold;}
+.codefile .kw82 {color: #003399; font-weight: bold;}
+.codefile .kw83 {color: #003399; font-weight: bold;}
+.codefile .kw84 {color: #003399; font-weight: bold;}
+.codefile .kw85 {color: #003399; font-weight: bold;}
+.codefile .kw86 {color: #003399; font-weight: bold;}
+.codefile .kw87 {color: #003399; font-weight: bold;}
+.codefile .kw88 {color: #003399; font-weight: bold;}
+.codefile .kw89 {color: #003399; font-weight: bold;}
+.codefile .kw90 {color: #003399; font-weight: bold;}
+.codefile .kw91 {color: #003399; font-weight: bold;}
+.codefile .kw92 {color: #003399; font-weight: bold;}
+.codefile .kw93 {color: #003399; font-weight: bold;}
+.codefile .kw94 {color: #003399; font-weight: bold;}
+.codefile .kw95 {color: #003399; font-weight: bold;}
+.codefile .kw96 {color: #003399; font-weight: bold;}
+.codefile .kw97 {color: #003399; font-weight: bold;}
+.codefile .kw98 {color: #003399; font-weight: bold;}
+.codefile .kw99 {color: #003399; font-weight: bold;}
+.codefile .kw100 {color: #003399; font-weight: bold;}
+.codefile .kw101 {color: #003399; font-weight: bold;}
+.codefile .kw102 {color: #003399; font-weight: bold;}
+.codefile .kw103 {color: #003399; font-weight: bold;}
+.codefile .kw104 {color: #003399; font-weight: bold;}
+.codefile .kw105 {color: #003399; font-weight: bold;}
+.codefile .kw106 {color: #003399; font-weight: bold;}
+.codefile .kw107 {color: #003399; font-weight: bold;}
+.codefile .kw108 {color: #003399; font-weight: bold;}
+.codefile .kw109 {color: #003399; font-weight: bold;}
+.codefile .kw110 {color: #003399; font-weight: bold;}
+.codefile .kw111 {color: #003399; font-weight: bold;}
+.codefile .kw112 {color: #003399; font-weight: bold;}
+.codefile .kw113 {color: #003399; font-weight: bold;}
+.codefile .kw114 {color: #003399; font-weight: bold;}
+.codefile .kw115 {color: #003399; font-weight: bold;}
+.codefile .kw116 {color: #003399; font-weight: bold;}
+.codefile .kw117 {color: #003399; font-weight: bold;}
+.codefile .kw118 {color: #003399; font-weight: bold;}
+.codefile .kw119 {color: #003399; font-weight: bold;}
+.codefile .kw120 {color: #003399; font-weight: bold;}
+.codefile .kw121 {color: #003399; font-weight: bold;}
+.codefile .kw122 {color: #003399; font-weight: bold;}
+.codefile .kw123 {color: #003399; font-weight: bold;}
+.codefile .kw124 {color: #003399; font-weight: bold;}
+.codefile .kw125 {color: #003399; font-weight: bold;}
+.codefile .kw126 {color: #003399; font-weight: bold;}
+.codefile .kw127 {color: #003399; font-weight: bold;}
+.codefile .kw128 {color: #003399; font-weight: bold;}
+.codefile .kw129 {color: #003399; font-weight: bold;}
+.codefile .kw130 {color: #003399; font-weight: bold;}
+.codefile .kw131 {color: #003399; font-weight: bold;}
+.codefile .kw132 {color: #003399; font-weight: bold;}
+.codefile .kw133 {color: #003399; font-weight: bold;}
+.codefile .kw134 {color: #003399; font-weight: bold;}
+.codefile .kw135 {color: #003399; font-weight: bold;}
+.codefile .kw136 {color: #003399; font-weight: bold;}
+.codefile .kw137 {color: #003399; font-weight: bold;}
+.codefile .kw138 {color: #003399; font-weight: bold;}
+.codefile .kw139 {color: #003399; font-weight: bold;}
+.codefile .kw140 {color: #003399; font-weight: bold;}
+.codefile .kw141 {color: #003399; font-weight: bold;}
+.codefile .kw142 {color: #003399; font-weight: bold;}
+.codefile .kw143 {color: #003399; font-weight: bold;}
+.codefile .kw144 {color: #003399; font-weight: bold;}
+.codefile .kw145 {color: #003399; font-weight: bold;}
+.codefile .kw146 {color: #003399; font-weight: bold;}
+.codefile .kw147 {color: #003399; font-weight: bold;}
+.codefile .kw148 {color: #003399; font-weight: bold;}
+.codefile .kw149 {color: #003399; font-weight: bold;}
+.codefile .kw150 {color: #003399; font-weight: bold;}
+.codefile .kw151 {color: #003399; font-weight: bold;}
+.codefile .kw152 {color: #003399; font-weight: bold;}
+.codefile .kw153 {color: #003399; font-weight: bold;}
+.codefile .kw154 {color: #003399; font-weight: bold;}
+.codefile .kw155 {color: #003399; font-weight: bold;}
+.codefile .kw156 {color: #003399; font-weight: bold;}
+.codefile .kw157 {color: #003399; font-weight: bold;}
+.codefile .kw158 {color: #003399; font-weight: bold;}
+.codefile .kw159 {color: #003399; font-weight: bold;}
+.codefile .kw160 {color: #003399; font-weight: bold;}
+.codefile .kw161 {color: #003399; font-weight: bold;}
+.codefile .kw162 {color: #003399; font-weight: bold;}
+.codefile .kw163 {color: #003399; font-weight: bold;}
+.codefile .kw164 {color: #003399; font-weight: bold;}
+.codefile .kw165 {color: #003399; font-weight: bold;}
+.codefile .kw166 {color: #003399; font-weight: bold;}
+.codefile .co1,
+.codefile .co2,
+.codefile .co3,
+.codefile .coMULTI {color: #a1a100;}
+
+/*
+.codefile .co2 {color: #ff0000; font-style: italic;}
+.codefile .co3 {color: #008000; font-style: italic;}
+.codefile .coMULTI {color: #808080; font-style: italic;}
+*/
+.codefile .es0 {color: #000099; font-weight: bold;}
+.codefile .es2 {color: #000099; font-weight: bold;}
+.codefile .br0 {color: #00AA00;}
+.codefile .sy0 {color: #00AA00;}
+.codefile .st0 {color: #aa0000;}
+.codefile .nu0 {color: #cc66cc;}
+.codefile .re0 {color: #cc00cc;}
+.codefile .re1 {color: #6666ff;}
+.codefile .re2 {color: #3333ff;}
+.codefile .re3 {color: #933;}
+.codefile .ln-xtra, .codefile li.ln-xtra, .codefile div.ln-xtra {background-color: #ffc;}
+.codefile span.xtra { display:block; }
+.codefile .sc-2 {color: #404040;}
+.codefile .sc-1 {color: #808080; font-style: italic;}
+.codefile .sc0 {color: #00bbdd;}
+.codefile .sc1 {color: #ddbb00;}
+.codefile .sc2 {color: #009900;}
+</style>
+
+<style type="text/css" media="print">
+.codefile {
+	border: 1px dashed #2F6FAB;
+}
+
+.codefile pre, .codefile xmp {
+	font-size: 9pt;
+	letter-spacing: -0.5pt;
+	line-height: 1em;
+	margin: 0;
+	padding: 0.25em;
+	overflow: hidden;
+}
+
+.saveforyourrecords, .tooltip {
+	display: none;
+}
+</style>
+</head>
+
+<body>
+    <h1>Homework Turnin</h1>
+
+
+<div id="main">
+    <h2 id="studentinfoheader">
+
+                    <span class="columnlabel">Name:</span>
+            Akshit            K            Patel            <br>
+        
+        <span class="columnlabel">Email:</span>
+        akshit@uw.edu        <br>
+
+                    <span class="columnlabel">Student ID:</span>
+            1561387            <br>
+        
+                    <span class="columnlabel">Section:</span>
+            DC            <br>
+        
+        <span class="columnlabel">Course:</span>
+        CSE         143        16au        <br> <span class="columnlabel">Assignment:</span>
+        a6    </h2>
+
+
+    <h2 id="studentinfoheader">
+        <span class="columnlabel">Receipt ID:</span>
+        14c83c33df5400c2bf1cbc570efd9b86    </h2>
+
+<p class="tooltip">Replacing prior submission from Thu 2016/11/17 05:55pm.</p>
+
+<!--
+<div class="warning">
+    NOTE: Emailed receipts temporarily disabled because of a server problem.  Please save a copy of this web page because you won't be receiving a receipt email.
+</div>
+-->
+
+
+    <h3 class="success">Turnin Successful!</h3>
+
+    <p class="saveforyourrecords">
+        Please <strong style="color: #090; background-color: #ffb">save or
+            print a copy of this page</strong> for your records. A receipt has also been emailed to you, but you should still save or print a copy of this web page to make certain that you have proof of your turnin. <strong>If
+            your files become lost or damaged and you do not have any record of
+            your receipt, we will not be able to give you any credit for your
+            work.</strong>
+    </p>
+
+    
+    <p>The following file(s) were received:</p>
+
+    
+
+        <div class="codefile">
+        <h2>
+                Anagrams.java &nbsp; &nbsp;
+                <span class="aside">(7185 bytes)</span>
+        </h2>
+
+        <pre><pre class="java5"><span class="co3">/**
+ * @author Akshit Patel
+ * @Date 11/10/2016 
+ * CSE 143D DC 
+ * TA: Melissa Medsker 
+ * HW #6 Anagrams
+ */</span>
+<span class="kw2">import</span> <span class="co2">java.util.*</span><span class="sy0">;</span><span class="co1">//Lists, Maps &amp; Stack.</span>
+&nbsp;
+<span class="co3">/**
+ * This class uses the given list of meaningful words(dictionary) to print at
+ * most the given maximum or all of the possible permutations(arrangements) of
+ * alphabetical letters in a given word or phrase which can be defined as an
+ * Anagram.
+ * 
+ * &lt;p&gt;
+ * A possible permutation is an Anagram if and only if it can be found in a
+ * given dictionary and all letters have been used from the word/phrase. &lt;br&gt;
+ * An example: [&lt;i&gt;cinema&lt;/i&gt;] has anagrams [&lt;i&gt;iceman&lt;/i&gt;], [&lt;i&gt;min, ace&lt;/i&gt;],
+ * &lt;i&gt;etc&lt;/i&gt;. A word can itself be an anagram like [&lt;i&gt;cinema&lt;/i&gt;] has
+ * [&lt;i&gt;cinema&lt;/i&gt;] as a possible permutation.
+ * &lt;/p&gt;
+ */</span>
+<span class="kw2">public</span> <span class="kw2">class</span> Anagrams <span class="br0">{</span>
+&nbsp;
+    <span class="coMULTI">/*
+     * Store the LetterInvetory of every word in given dictionary.
+     */</span>
+    <span class="kw2">private</span> <span class="kw46">Map</span><span class="sy0">&lt;</span><span class="kw21">String</span>, LetterInventory<span class="sy0">&gt;</span> wordMap<span class="sy0">;</span>
+    <span class="coMULTI">/*
+     * Reference to the list of words provided as dictionary.
+     */</span>
+    <span class="kw2">private</span> <span class="kw166">List</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span> dict<span class="sy0">;</span>
+&nbsp;
+    <span class="co3">/**
+     * Constructs a new Anagrams object that uses the given list of strings as
+     * its dictionary.
+     * 
+     * @param dictionary list of strings of words which contains no duplicates,
+     *        is nonempty collection of nonempty sequences of letters and which
+     *        can be used to find anagrams of a given word/phrase.
+     */</span>
+    <span class="kw2">public</span> Anagrams<span class="br0">(</span><span class="kw166">List</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span> dictionary<span class="br0">)</span> <span class="br0">{</span>
+        <span class="kw2">this</span>.<span class="me1">dict</span> = dictionary<span class="sy0">;</span><span class="co1">// reference</span>
+        <span class="kw2">this</span>.<span class="me1">wordMap</span> = <span class="kw2">new</span> <span class="kw46">HashMap</span><span class="sy0">&lt;</span><span class="kw21">String</span>, LetterInventory<span class="sy0">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+        <span class="co1">// store the letterInvetory of every word in dictionary.</span>
+        <span class="kw1">for</span> <span class="br0">(</span><span class="kw21">String</span> word : <span class="kw2">this</span>.<span class="me1">dict</span><span class="br0">)</span> <span class="br0">{</span>
+            <span class="kw2">this</span>.<span class="me1">wordMap</span>.<span class="me1">put</span><span class="br0">(</span>word, <span class="kw2">new</span> LetterInventory<span class="br0">(</span>word<span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+    <span class="br0">}</span>
+&nbsp;
+    <span class="co3">/**
+     * Prints at most the given maximum or all of the possible permutations of
+     * letters that make up words that all together form an anagram of a given
+     * word/phrase with each individual word having meaning i.e. it can be found
+     * in the given dictionary. Only alphabetical letters are used to form an
+     * anagram ignoring the non-alphabets.
+     * 
+     * &lt;p&gt;
+     * If the given maximum is a positive integer like 2 then it will print
+     * anagrams of the given word/phrase with two words at max i.e. [inventory]
+     * can have anagrams [inventory] or [irony, vent] but not [inn, rev, toy] as
+     * it is made up of 3 words. However, if the given maximum is 0 then all
+     * possible combinations of words that make up an anagram are printed.
+     * &lt;/p&gt;
+     * 
+     * &lt;p&gt;
+     * The input string can be: "a b c".&lt;br&gt;
+     * The output is in the form: [a,* b, c] or [ac, b] where a, b &amp; c are
+     * possible words for the anagram inside square brackets, the order of the
+     * possible word as anagram is dependent on the dictionary order.
+     * &lt;/p&gt;
+     * 
+     * @param text String representation of the word/phrase whose anagrams need
+     *        to printed.
+     * @param max Integer value of the maximum number of words than a possible
+     *        anagram should have. 0 for unlimited possibilities or an positive
+     *        integer for limited possibilities upto the given maximum.
+     * @throws IllegalArgumentException if the given integer maximum limit is a
+     *         negative number.
+     */</span>
+    <span class="kw2">public</span> <span class="kw3">void</span> print<span class="br0">(</span><span class="kw21">String</span> text, <span class="kw3">int</span> max<span class="br0">)</span> <span class="br0">{</span>
+        <span class="kw1">if</span> <span class="br0">(</span>max <span class="sy0">&lt;</span> <span class="nu0">0</span><span class="br0">)</span> <span class="br0">{</span>
+            <span class="kw2">throw</span> <span class="kw2">new</span> <span class="kw21">IllegalArgumentException</span><span class="br0">(</span><span class="st0">"Max cannot be negative!"</span><span class="br0">)</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+        LetterInventory textInventory = <span class="kw2">new</span> LetterInventory<span class="br0">(</span>text<span class="br0">)</span><span class="sy0">;</span>
+        <span class="kw1">if</span> <span class="br0">(</span>max == <span class="nu0">0</span><span class="br0">)</span> <span class="br0">{</span>
+            <span class="co1">// max = Integer.MAX_VALUE;</span>
+            max = text.<span class="me1">length</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+        <span class="br0">}</span>
+        <span class="co1">// possible anagram to be stored in stack.</span>
+        <span class="kw46">Stack</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span> anagram = <span class="kw2">new</span> <span class="kw46">Stack</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+        <span class="co1">// print the anagrams.</span>
+        <span class="kw2">this</span>.<span class="me1">getAnagrams</span><span class="br0">(</span><span class="kw2">this</span>.<span class="me1">dict</span>, textInventory, max, anagram<span class="br0">)</span><span class="sy0">;</span>
+    <span class="br0">}</span>
+&nbsp;
+    <span class="co3">/**
+     * Prints at most the given maximum limit of an anagram of a given
+     * word/phrase with each individual word having meaning i.e. it can be found
+     * in the given dictionary. Only alphabetical letters are used to form an
+     * anagram ignoring the non-alphabets.
+     * 
+     * @param choices List of String of words of the given dictionary, also used
+     *        to get the pruned version of larger dictionary made up of relevant
+     *        words(possible words that could make an anagram).
+     * @param textInventory LetterInvetory of the given text used to make
+     *        anagrams and pruning the dictionary to shorter dictionary of
+     *        relevant words.
+     * @param max integer value of the maximum number of words than a possible
+     *        anagram should have. Needs to a number greater than 0.
+     * @param anagram Stack of strings that makes up an anagram of the given
+     *        word/phrase.
+     */</span>
+    <span class="kw2">private</span> <span class="kw3">void</span> getAnagrams<span class="br0">(</span><span class="kw166">List</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span> choices,
+                             LetterInventory textInventory,
+                             <span class="kw3">int</span> max,
+                             <span class="kw46">Stack</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span> anagram<span class="br0">)</span> <span class="br0">{</span>
+        <span class="co1">// proceed if the inventory contains letters to consider.</span>
+        <span class="kw1">if</span> <span class="br0">(</span>textInventory <span class="sy0">!</span>= <span class="kw4">null</span><span class="br0">)</span> <span class="br0">{</span>
+            <span class="co1">// base case: a possible anagram is found.</span>
+            <span class="kw1">if</span> <span class="br0">(</span>textInventory.<span class="me1">isEmpty</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span>
+                <span class="kw21">System</span>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">(</span>anagram<span class="br0">)</span><span class="sy0">;</span>
+            <span class="br0">}</span> <span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">(</span>max <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">)</span> <span class="br0">{</span>
+                <span class="co1">// prune the given dictionary to more relevant words.</span>
+                <span class="kw166">List</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span> pruneChoices = <span class="kw2">this</span>.<span class="me1">pruneChoices</span><span class="br0">(</span>textInventory,
+                                                              choices<span class="br0">)</span><span class="sy0">;</span>
+                <span class="kw1">for</span> <span class="br0">(</span><span class="kw21">String</span> word : pruneChoices<span class="br0">)</span> <span class="br0">{</span>
+                    anagram.<span class="me1">push</span><span class="br0">(</span>word<span class="br0">)</span><span class="sy0">;</span> <span class="co1">// choose the word</span>
+                    <span class="kw2">this</span>.<span class="me1">getAnagrams</span><span class="br0">(</span>pruneChoices,
+                                     textInventory
+                                             .<span class="me1">subtract</span><span class="br0">(</span><span class="kw2">this</span>.<span class="me1">wordMap</span>.<span class="me1">get</span><span class="br0">(</span>word<span class="br0">)</span><span class="br0">)</span>,
+                                     max - <span class="nu0">1</span>,
+                                     anagram<span class="br0">)</span><span class="sy0">;</span>
+                    anagram.<span class="me1">pop</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><span class="co1">// unchoose the word.</span>
+                <span class="br0">}</span>
+            <span class="br0">}</span>
+        <span class="br0">}</span>
+    <span class="br0">}</span>
+&nbsp;
+    <span class="co3">/**
+     * Returns a shorter/pruned version of the given dictionary that has more
+     * relevant words(possible words that could make an anagram) that can be
+     * considered to avoid unnecessary computation.
+     * 
+     * @param textInventory LetterInvetory of the given text used to prune the
+     *        dictionary to shorter dictionary.
+     * @param shortDict List of String of words used as dictionary for the
+     *        Anagram object.
+     * @return List of string with pruned choices of the given dictionary
+     *         consisting of only relevant words.
+     */</span>
+    <span class="kw2">private</span> <span class="kw166">List</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span> pruneChoices<span class="br0">(</span>LetterInventory textInventory,
+                                      <span class="kw166">List</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span> shortDict<span class="br0">)</span> <span class="br0">{</span>
+        <span class="kw166">List</span><span class="sy0">&lt;</span><span class="kw21">String</span><span class="sy0">&gt;</span> choices = <span class="kw2">new</span> <span class="kw46">ArrayList</span><span class="sy0">&lt;&gt;</span><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span>
+        <span class="kw1">for</span> <span class="br0">(</span><span class="kw21">String</span> word : shortDict<span class="br0">)</span> <span class="br0">{</span>
+            <span class="co1">// if relevant word found then add it to pruned version of list.</span>
+            <span class="kw1">if</span> <span class="br0">(</span>textInventory.<span class="me1">subtract</span><span class="br0">(</span><span class="kw2">this</span>.<span class="me1">wordMap</span>.<span class="me1">get</span><span class="br0">(</span>word<span class="br0">)</span><span class="br0">)</span> <span class="sy0">!</span>= <span class="kw4">null</span><span class="br0">)</span> <span class="br0">{</span>
+                choices.<span class="me1">add</span><span class="br0">(</span>word<span class="br0">)</span><span class="sy0">;</span>
+            <span class="br0">}</span>
+        <span class="br0">}</span>
+        <span class="kw2">return</span> choices<span class="sy0">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span></pre></pre>
+    </div>
+
+        
+</div>
+
+
+    <div id="loading">One moment...</div>
+    <pre id="dumptarget"></pre>
+
+    
+            <script async="" src="./Homework Turnin_files/analytics.js.download"></script><script src="./Homework Turnin_files/additional.js.download" type="text/javascript"></script>
+
+                    <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-78977559-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    
+    
+
+
+</body></html>

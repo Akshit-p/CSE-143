@@ -1,0 +1,161 @@
+/**
+ * @author Akshit Patel
+ * @Date 1/2/2016 
+ * CSE 143D DC 
+ * TA: Melissa Medsker 
+ * HW #8 Huffman Coding
+ */
+import java.io.PrintStream;
+import java.util.*;
+
+/**
+ * HuffmanCode class represents a huffman code for a particular message. It
+ * compresses the message and provides useful method to save the compression and
+ * also method to decompress into original message.
+ *
+ */
+public class HuffmanCode {
+
+    /**
+     * Reference to the huffman code tree of the given message.
+     */
+    private HuffmanNode huffmanRoot;
+
+    /**
+     * Constructs a new HuffmanCode object from a given array of ASCII
+     * characters as indices and the data value its frequency.
+     * 
+     * @param frequencies array of integers representing the frequency or the
+     *        count of occurrence of a particular ASCII character, where the
+     *        ASCII character is the index of the given array. The frequencies
+     *        need to be positive i.e. >= 0
+     */
+    public HuffmanCode(int[] frequencies) {
+        // priority queue to prioritize characters according to frequency.
+        Queue<HuffmanNode> sort = new PriorityQueue<HuffmanNode>();
+        // add the characters with frequency greater than 0 to priority queue.
+        for (int i = 0; i < frequencies.length; i++) {
+            if (frequencies[i] > 0) {
+                sort.add(new HuffmanNode((char) i, frequencies[i]));
+            }
+        }
+        // make the huffman code tree by combining elements.
+        while (sort.size() > 1) {
+            HuffmanNode firstData = sort.remove();
+            HuffmanNode secondData = sort.remove();
+            // add the combination of first and second element to the queue.
+            // new parent has no data value other than combined frequency.
+            sort.add(new HuffmanNode('\0',
+                    firstData.frequency + secondData.frequency, firstData,
+                    secondData));
+        }
+        // get the last remaining element which is the huffman code.
+        this.huffmanRoot = sort.remove();
+    }
+
+    /**
+     * Constructs a new HuffmanCode object given a scanner to read from a
+     * previously constructed code from .code file.
+     * 
+     * @param input scanner representing a previously constructed .code file.
+     *        Scanner should not be null and must have data encoded in legal,
+     *        existing and valid huffman standard format
+     */
+    public HuffmanCode(Scanner input) {
+        // scan until no elements left.
+        while (input.hasNextLine()) {
+            // get the ASCII character.
+            int n = Integer.parseInt(input.nextLine());
+            // get the huffman tree path directions for the character.
+            String code = input.nextLine();
+            // construct the tree.
+            this.huffmanRoot = huffmanTree(this.huffmanRoot, (char) n, code);
+        }
+    }
+
+    /**
+     * Constructs the huffman code tree for a HuffmanCode object when given with
+     * the directions to store the given ASCII character. The frequency of all
+     * nodes are set to default value of zero.
+     * 
+     * @param current
+     * @param letter
+     * @param code
+     * @return
+     */
+    private HuffmanNode huffmanTree(HuffmanNode current,
+                                    char letter,
+                                    String code) {
+        if (code.isEmpty()) {
+            return new HuffmanNode(letter, 0, null, null);
+        }
+        if (current == null) {
+            current = new HuffmanNode('\0', 0);
+        }
+        if (code.charAt(0) == '0') {
+            current.left = huffmanTree(current.left, letter, code.substring(1));
+        } else {
+            current.right =
+                          huffmanTree(current.right, letter, code.substring(1));
+        }
+        return current;
+    }
+
+    public void save(PrintStream output) {
+        this.save(output, this.huffmanRoot, "");
+    }
+
+    private void save(PrintStream output, HuffmanNode current, String code) {
+        if (current != null) {
+            if (current.left == null && current.right == null) {
+                output.println((int) current.data);
+                output.println(code);
+            } else {
+                this.save(output, current.left, code + "0");
+                this.save(output, current.right, code + "1");
+            }
+        }
+    }
+
+    public void translate(BitInputStream input, PrintStream output) {
+        HuffmanNode current = this.huffmanRoot;
+        while (input.hasNextBit() && current != null) {// stops when no bits
+                                                       // left.
+            if (input.nextBit() == 0) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+            if (current.left == null && current.right == null) {
+                output.write(current.data);
+                current = this.huffmanRoot;
+            }
+        }
+    }
+
+    private static class HuffmanNode implements Comparable<HuffmanNode> {
+        public final char data;
+        public final int frequency;
+        public HuffmanNode left;
+        public HuffmanNode right;
+
+        public HuffmanNode(char data, int frequency) {
+            this(data, frequency, null, null);
+        }
+
+        public HuffmanNode(char data,
+                           int frequency,
+                           HuffmanNode left,
+                           HuffmanNode right) {
+            this.data = data;
+            this.frequency = frequency;
+            this.left = left;
+            this.right = right;
+        }
+
+        @Override
+        public int compareTo(HuffmanNode other) {
+            return Integer.compare(this.frequency, other.frequency);
+        }
+    }
+}
